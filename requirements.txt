@@ -1,0 +1,15 @@
+nibabel
+h5py
+matplotlib
+pycocotools
+IPython
+himalaya
+timm
+fairscale
+omegaconf
+einops
+pytorch-lightning
+pandas
+taming-transformers
+clip
+transformers
