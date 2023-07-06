@@ -38,17 +38,24 @@ def main():
 
     # Note that most of them are 1-base index!
     # This is why I subtract 1
+    # Coco id for in order shown (1, 1000)
     sharedix = nsd_expdesign['sharedix'] -1 
 
     if use_stim == 'ave':
+        # 9841 averages, idrk why. Its a weird number
         stims = np.load(f'../../mrifeat/{subject}/{subject}_stims_ave.npy')
     else: # Each
+        # 27750 = 37 sessions * 750 scan
         stims = np.load(f'../../mrifeat/{subject}/{subject}_stims.npy')
     
     feats = []
     tr_idx = np.zeros(len(stims))
 
     for idx, s in tqdm(enumerate(stims)): 
+        print(idx, s)
+        exit()
+
+        # if the coco id is shown to subject
         if s in sharedix:
             tr_idx[idx] = 0
         else:
