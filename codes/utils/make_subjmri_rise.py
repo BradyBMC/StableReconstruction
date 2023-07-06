@@ -6,16 +6,7 @@ from nsd_access import NSDAccess
 import scipy.io
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--subject",
-        type=str,
-        default=None,
-        help="subject name: subj01 or subj02  or subj05  or subj07 for full-data subjects ",
-    )
-
-    opt = parser.parse_args()
-    subject = opt.subject
+    subject = 'subj01'
     atlasname = 'streams'
     
     nsda = NSDAccess('../../nsd/')
@@ -24,7 +15,15 @@ def main():
     # Note that most of nsd_expdesign indices are 1-base index!
     # This is why subtracting 1
     sharedix = nsd_expdesign['sharedix'] -1 
+    
+    stims_all = np.load(f'../../mrifeat/subj01/subj01_stims.npy')
+    stims_unique = np.load(f'../../mrifeat/subj01/subj01_stims_ave.npy')
 
+    savedir = f'../../mrifeat/{subject}/'
+    os.makedirs(savedir, exist_ok=True)
+    exit()
+
+    '''
     behs = pd.DataFrame()
     for i in range(1,38):
         beh = nsda.read_behavior(subject=subject, 
@@ -35,12 +34,10 @@ def main():
     stims_unique = behs['73KID'].unique() - 1
     stims_all = behs['73KID'] - 1
 
-    savedir = f'../../mrifeat/{subject}/'
-    os.makedirs(savedir, exist_ok=True)
-
     if not os.path.exists(f'{savedir}/{subject}_stims.npy'):
         np.save(f'{savedir}/{subject}_stims.npy',stims_all)
         np.save(f'{savedir}/{subject}_stims_ave.npy',stims_unique)
+    '''
 
     for i in range(1,38):
         print(i)
