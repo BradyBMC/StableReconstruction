@@ -15,6 +15,8 @@ from pytorch_lightning import seed_everything
 import sys
 sys.path.append("../utils/")
 from nsd_access.nsda import NSDAccess
+
+sys.path.append("../diffusion_sd1/stable-diffusion")
 from ldm.util import instantiate_from_config
 from ldm.models.diffusion.ddim import DDIMSampler
 

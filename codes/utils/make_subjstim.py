@@ -53,8 +53,6 @@ def main():
 
     for idx, s in tqdm(enumerate(stims)): 
         print(idx, s)
-        exit()
-
         # if the coco id is shown to subject
         if s in sharedix:
             tr_idx[idx] = 0
